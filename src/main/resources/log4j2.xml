@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<Configuration status="WARN" monitorInterval="300">  
+	<Properties>
+		<!-- 日志保存路径 -->
+		<property name="LOG_HOME">D:/hotdog_log</property>
+		<!-- 文件保存格式 -->
+		<property name="pattern_layout">%d{yyyy-MM-dd HH:mm:ss.SSS} [%c] [%F:%L] %-5level --|#$#|shopId:%X{shopId}|#$#|op_er:%X{op_er}|#$#|out_trade_no:%X{out_trade_no}|#$#|-- |^-^|%m|^-^|%n</property>
+		<!-- 应用名称 -->
+		<property name="SERVER_NAME">hotdog</property>
+	</Properties>
+    <Appenders>  
+        <Console name="Console" target="SYSTEM_OUT">  
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss} %5p %c{1}:%L - %m%n" />  
+        </Console>  
+         <!-- 程序调试日志 -->  
+        <RollingRandomAccessFile name="DevLog" fileName="${LOG_HOME}/${SERVER_NAME}_dev/${date:yyyy_MM}/${SERVER_NAME}_${date:yyyy_MM}"  
+            filePattern="${LOG_HOME}/${SERVER_NAME}_dev/${date:yyyy_MM}/${SERVER_NAME}.%d{yyyy-MM-dd-HH}.txt">  
+            <PatternLayout pattern="${pattern_layout}" />  
+            <Policies>  
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />  
+            </Policies>  
+        </RollingRandomAccessFile>  
+        
+        <!-- 错误日志 -->
+        <RandomAccessFile name="ErrorLog" fileName="${LOG_HOME}/${SERVER_NAME}_error/${date:yyyy_MM}/${SERVER_NAME}_error.txt">
+        	<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%c] [%F:%L] %-5level |^-^|%m|^-^|%n" />  
+        	<Filters>
+        		<ThresholdFilter level="ERROR"/>
+        		<ThresholdFilter level="FATAL" onMatch="DENY" onMismatch="NEUTRAL"/>
+    		</Filters>
+        </RandomAccessFile>
+    </Appenders>  
+    
+    <Loggers> 
+    	<!-- 自定义日志输出格式，单独配置日志输出 -->
+    	<!-- additivity="false"表示在该logger中输出的日志不会再延伸到父层logger -->
+    	
+        <Root level="info">  
+        	<!-- 程序员调试输出日志 -->
+        	<!-- <AppenderRef ref="DevLog" /> -->
+        	<!-- 控制台输出日志 -->
+            <AppenderRef ref="Console" /> 
+            
+        </Root>  
+        <Logger name="errorLog" level="error" additivity="false">
+    		<AppenderRef ref="ErrorLog"></AppenderRef>
+    	</Logger>
+    </Loggers>  
+    
+</Configuration>  
