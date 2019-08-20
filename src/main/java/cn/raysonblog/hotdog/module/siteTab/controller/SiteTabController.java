@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiOperation;
  *
  * @author rayson
  * @email 793514387@qq.com
- * @date 2019-08-19 17:49:01
+ * @date 2019-08-20 10:57:31
  */
 @Api(tags = "SiteTab管理")
 @RestController
@@ -45,9 +45,9 @@ public class SiteTabController extends BaseController {
      * 信息
      */
     @ApiOperation("根据id获取信息")
-    @RequestMapping(value = "/info/{id}", method = RequestMethod.GET)
-    public AjaxResult info(@PathVariable("id") Integer id){
-		SiteTabEntity siteTab = siteTabService.getById(id);
+    @RequestMapping(value = "/info/{siteTabCode}", method = RequestMethod.GET)
+    public AjaxResult info(@PathVariable("siteTabCode") String siteTabCode){
+		SiteTabEntity siteTab = siteTabService.getById(siteTabCode);
 
         return AjaxResult.success(siteTab);
     }
@@ -79,8 +79,8 @@ public class SiteTabController extends BaseController {
      */
     @ApiOperation("删除")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public AjaxResult delete(@RequestBody Integer[] ids){
-		siteTabService.removeByIds(Arrays.asList(ids));
+    public AjaxResult delete(@RequestBody String[] siteTabCodes){
+		siteTabService.removeByIds(Arrays.asList(siteTabCodes));
 
         return AjaxResult.success("成功");
     }

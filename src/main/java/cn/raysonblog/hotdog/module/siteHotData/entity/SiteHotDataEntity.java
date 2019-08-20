@@ -1,4 +1,4 @@
-package cn.raysonblog.hotdog.module.article.entity;
+package cn.raysonblog.hotdog.module.siteHotData.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -15,76 +15,47 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
- * 
+ * 热点数据信息表
  * 
  * @author rayson
  * @email 793514387@qq.com
  * @date 2019-08-20 10:57:31
  */
-@TableName("article")
+@TableName("site_hot_data")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper=false)
-public class ArticleEntity extends BaseModel<ArticleEntity> implements Serializable {
+public class SiteHotDataEntity extends BaseModel<SiteHotDataEntity> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 
 
 	/**
-	 * id
+	 * 站点id
 	 */
 		@Override
 	protected Serializable pkVal() {
 		// TODO Auto-generated method stub
-		return this.id;
+		return this.siteCode;
 	}
-	
-	@TableId(type=IdType.AUTO)
-			private Long id;
-	/**
-	 * 文章标题
-	 */
-		private String title;
-	/**
-	 * 文件链接
-	 */
-		private String url;
-	/**
-	 * 发布时间
-	 */
-		private Date publishDate;
-	/**
-	 * 创建时间
-	 */
-		private Date createDate;
-	/**
-	 * 作者
-	 */
-		private String author;
-	/**
-	 * 是否原创
-	 */
-		private Integer original;
-	/**
-	 * 站点id
-	 */
-		private String siteCode;
-	/**
-	 * 更新时间
-	 */
-		private Date updateDate;
-	/**
-	 * 排序
-	 */
-		private Integer sort;
-	/**
-	 * 文章浏览量
-	 */
-		private Long pageView;
+
+	private String siteCode;
 	/**
 	 * 站点tabid
 	 */
 		private String siteTabCode;
+	/**
+	 * 站点数据
+	 */
+		private String data;
+	/**
+	 * 创建时间
+	 */
+		private Date createTime;
+	/**
+	 * 更新时间
+	 */
+		private Date updateTime;
 
 }

@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
  * 
  * @author rayson
  * @email 793514387@qq.com
- * @date 2019-08-19 17:49:01
+ * @date 2019-08-20 10:57:31
  */
 @TableName("site")
 @Data
@@ -37,11 +37,10 @@ public class SiteEntity extends BaseModel<SiteEntity> implements Serializable {
 		@Override
 	protected Serializable pkVal() {
 		// TODO Auto-generated method stub
-		return this.id;
+		return this.siteCode;
 	}
-	
-	@TableId(type=IdType.AUTO)
-			private Integer id;
+
+	private String siteCode;
 	/**
 	 * 站点名
 	 */
@@ -65,7 +64,7 @@ public class SiteEntity extends BaseModel<SiteEntity> implements Serializable {
 	/**
 	 * 标签id
 	 */
-		private Integer tagId;
+		private String siteTagCode;
 	/**
 	 * 站点中文名
 	 */
@@ -74,5 +73,10 @@ public class SiteEntity extends BaseModel<SiteEntity> implements Serializable {
 	 * 爬取目标网页地址
 	 */
 		private String targetUrl;
+
+	/**
+	 * 站点url
+	 */
+	private String siteUrl;
 
 }

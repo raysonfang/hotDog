@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiOperation;
  *
  * @author rayson
  * @email 793514387@qq.com
- * @date 2019-08-19 17:49:01
+ * @date 2019-08-20 10:57:31
  */
 @Api(tags = "Tag管理")
 @RestController
@@ -45,9 +45,9 @@ public class TagController extends BaseController {
      * 信息
      */
     @ApiOperation("根据id获取信息")
-    @RequestMapping(value = "/info/{id}", method = RequestMethod.GET)
-    public AjaxResult info(@PathVariable("id") Integer id){
-		TagEntity tag = tagService.getById(id);
+    @RequestMapping(value = "/info/{tagCode}", method = RequestMethod.GET)
+    public AjaxResult info(@PathVariable("tagCode") String tagCode){
+		TagEntity tag = tagService.getById(tagCode);
 
         return AjaxResult.success(tag);
     }
@@ -79,8 +79,8 @@ public class TagController extends BaseController {
      */
     @ApiOperation("删除")
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public AjaxResult delete(@RequestBody Integer[] ids){
-		tagService.removeByIds(Arrays.asList(ids));
+    public AjaxResult delete(@RequestBody String[] tagCodes){
+		tagService.removeByIds(Arrays.asList(tagCodes));
 
         return AjaxResult.success("成功");
     }

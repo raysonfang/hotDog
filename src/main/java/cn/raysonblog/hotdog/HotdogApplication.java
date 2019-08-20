@@ -11,6 +11,10 @@ import org.springframework.context.ApplicationListener;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+/**
+ * SpringBoot 启动类
+ * @author raysonfang
+ */
 @SpringBootApplication
 public class HotdogApplication implements ApplicationListener<WebServerInitializedEvent> {
     static Logger log = LogManager.getLogger(HotdogApplication.class);

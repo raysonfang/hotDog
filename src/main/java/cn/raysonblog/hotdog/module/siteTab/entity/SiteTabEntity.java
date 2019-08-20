@@ -13,13 +13,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * 
  * 
  * @author rayson
  * @email 793514387@qq.com
- * @date 2019-08-19 17:49:01
+ * @date 2019-08-20 10:57:31
  */
 @TableName("site_tab")
 @Data
@@ -32,16 +34,16 @@ public class SiteTabEntity extends BaseModel<SiteTabEntity> implements Serializa
 
 
 	/**
-	 * id
+	 * 站点榜单代码
 	 */
 		@Override
 	protected Serializable pkVal() {
 		// TODO Auto-generated method stub
-		return this.id;
+		return this.siteTabCode;
 	}
-	
-	@TableId(type=IdType.AUTO)
-			private Integer id;
+
+	private String siteTabCode;
+
 	/**
 	 * 站点对应的榜单名称
 	 */
@@ -49,7 +51,7 @@ public class SiteTabEntity extends BaseModel<SiteTabEntity> implements Serializa
 	/**
 	 * 站点id
 	 */
-		private Integer siteId;
+		private String siteCode;
 	/**
 	 * 创建时间
 	 */
@@ -67,4 +69,25 @@ public class SiteTabEntity extends BaseModel<SiteTabEntity> implements Serializa
 	 */
 		private Integer state;
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+
+		if (o == null || getClass() != o.getClass()) return false;
+
+		SiteTabEntity that = (SiteTabEntity) o;
+
+		return new EqualsBuilder()
+				.append(siteTabCode, that.siteTabCode)
+				.append(siteCode, that.siteCode)
+				.isEquals();
+	}
+
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder(17, 37)
+				.append(siteTabCode)
+				.append(siteCode)
+				.toHashCode();
+	}
 }

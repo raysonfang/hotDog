@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
  * 
  * @author rayson
  * @email 793514387@qq.com
- * @date 2019-08-19 17:49:01
+ * @date 2019-08-20 10:57:31
  */
 @TableName("tag")
 @Data
@@ -32,16 +32,15 @@ public class TagEntity extends BaseModel<TagEntity> implements Serializable {
 
 
 	/**
-	 * id
+	 * 标签代码
 	 */
 		@Override
 	protected Serializable pkVal() {
 		// TODO Auto-generated method stub
-		return this.id;
+		return this.tagCode;
 	}
-	
-	@TableId(type=IdType.AUTO)
-			private Integer id;
+
+	private String tagCode;
 	/**
 	 * 标签名
 	 */
