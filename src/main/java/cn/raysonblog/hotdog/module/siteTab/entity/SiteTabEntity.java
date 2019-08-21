@@ -69,6 +69,11 @@ public class SiteTabEntity extends BaseModel<SiteTabEntity> implements Serializa
 	 */
 		private Integer state;
 
+	/**
+	 * 排序
+	 */
+	private Integer sort;
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;

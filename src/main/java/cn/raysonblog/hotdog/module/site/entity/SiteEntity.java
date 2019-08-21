@@ -79,4 +79,9 @@ public class SiteEntity extends BaseModel<SiteEntity> implements Serializable {
 	 */
 	private String siteUrl;
 
+	/**
+	 * 排序
+	 */
+	private Integer sort;
+
 }

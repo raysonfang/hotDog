@@ -3,13 +3,6 @@ package cn.raysonblog.hotdog.spider.processor.ithome;
 import cn.raysonblog.hotdog.spider.annotation.SiteConfig;
 import cn.raysonblog.hotdog.spider.processor.AbstractPageProcessor;
 import us.codecraft.webmagic.Page;
-import us.codecraft.webmagic.selector.Selectable;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Consumer;
 
 /**
  * 爬取IT之家的24小时阅读排行榜数据
