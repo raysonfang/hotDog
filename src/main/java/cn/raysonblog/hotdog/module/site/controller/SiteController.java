@@ -1,8 +1,11 @@
 package cn.raysonblog.hotdog.module.site.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,11 +21,11 @@ import io.swagger.annotations.ApiOperation;
 /**
  * 站点信息表
  *
- * @author rayson
+ * @author raysonfang
  * @email 793514387@qq.com
  * @date 2019-08-20 10:57:31
  */
-@Api(tags = "Site管理")
+@Api(tags = "站点Site管理")
 @RestController
 @RequestMapping("site")
 public class SiteController extends BaseController {
@@ -36,8 +39,16 @@ public class SiteController extends BaseController {
     @ApiOperation("获取列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public AjaxResult list(@RequestParam Map<String, Object> params){
-
-        return AjaxResult.success("成功");
+        String tagCode = (String)params.get("tagCode");
+        if(StringUtils.isEmpty(tagCode)){
+            return new AjaxResult().addError("分类code为空!");
+        }
+        QueryWrapper<SiteEntity> queryWrapper = new QueryWrapper<>();
+        queryWrapper.orderByAsc("sort");
+        queryWrapper.eq("state", 1);
+        queryWrapper.eq("site_tag_code", tagCode);
+        List<SiteEntity> list = siteService.list(queryWrapper);
+        return AjaxResult.success(list);
     }
 
 

@@ -11,13 +11,18 @@ import java.util.List;
 /**
  * 
  * 
- * @author rayson
+ * @author raysonfang
  * @email 793514387@qq.com
  * @date 2019-08-20 10:57:31
  */
 @Mapper
 public interface SiteTabMapper extends IBaseMapper<SiteTabEntity> {
 
-    @Select("select a.*, b.site_url, b.site, b.site_host from site_tab a left join site b on a.site_code = b.site_code where a.state = 1")
+    @Select("select a.*, b.site_url, b.site, b.site_host, b.cookie, b.cookie_flag from site_tab a left join site b on a.site_code = b.site_code where a.state = 1")
     List<SiteTabInfo> listSiteTabInfo();
+
+    @Select("select a.*, b.site_url, b.site, b.site_host, b.cookie, b.cookie_flag " +
+            "from site_tab a left join site b on a.site_code = b.site_code " +
+            "where a.state = 1 and a.site_code=#{siteCode} and a.site_tab_code = #{siteTabCode}")
+    SiteTabInfo getOneSiteTabInfo(SiteTabInfo siteTabInfo);
 }

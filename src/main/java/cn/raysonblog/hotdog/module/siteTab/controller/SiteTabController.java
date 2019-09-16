@@ -18,11 +18,11 @@ import io.swagger.annotations.ApiOperation;
 /**
  * 
  *
- * @author rayson
+ * @author raysonfang
  * @email 793514387@qq.com
  * @date 2019-08-20 10:57:31
  */
-@Api(tags = "SiteTab管理")
+@Api(tags = "站点子分类SiteTab管理")
 @RestController
 @RequestMapping("siteTab")
 public class SiteTabController extends BaseController {

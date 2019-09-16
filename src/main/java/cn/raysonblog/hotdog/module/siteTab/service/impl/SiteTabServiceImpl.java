@@ -18,4 +18,9 @@ public class SiteTabServiceImpl extends BaseServiceImpl<SiteTabMapper, SiteTabEn
 
         return baseMapper.listSiteTabInfo();
     }
+
+    @Override
+    public SiteTabInfo getOneSiteTabInfo(SiteTabInfo siteTabInfo) {
+        return baseMapper.getOneSiteTabInfo(siteTabInfo);
+    }
 }

@@ -61,5 +61,9 @@ public class TagEntity extends BaseModel<TagEntity> implements Serializable {
 	 * 
 	 */
 		private Date updateDate;
+	/**
+	 * 分类英文标志，作为前端class名
+	 */
+	private String tagClass;
 
 }

@@ -15,5 +15,6 @@ import java.util.List;
  */
 public interface ISiteTabService extends IBaseService<SiteTabEntity> {
     public List<SiteTabInfo> listSiteTabInfo();
+    public SiteTabInfo getOneSiteTabInfo(SiteTabInfo siteTabInfo);
 }
 

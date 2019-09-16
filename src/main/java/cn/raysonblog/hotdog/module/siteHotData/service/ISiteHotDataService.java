@@ -2,7 +2,9 @@ package cn.raysonblog.hotdog.module.siteHotData.service;
 
 import cn.raysonblog.hotdog.base.service.IBaseService;
 import cn.raysonblog.hotdog.module.siteHotData.entity.SiteHotDataEntity;
+import cn.raysonblog.hotdog.module.siteHotData.vo.SiteHotDataVO;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,5 +16,6 @@ import java.util.Map;
  */
 public interface ISiteHotDataService extends IBaseService<SiteHotDataEntity> {
 
+    public List<SiteHotDataVO> getSiteHotDataListBySiteCode(String siteCode);
 }
 

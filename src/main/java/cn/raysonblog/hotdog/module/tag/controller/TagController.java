@@ -1,8 +1,10 @@
 package cn.raysonblog.hotdog.module.tag.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +24,7 @@ import io.swagger.annotations.ApiOperation;
  * @email 793514387@qq.com
  * @date 2019-08-20 10:57:31
  */
-@Api(tags = "Tag管理")
+@Api(tags = "站点分类Tag管理")
 @RestController
 @RequestMapping("tag")
 public class TagController extends BaseController {
@@ -36,8 +38,11 @@ public class TagController extends BaseController {
     @ApiOperation("获取列表")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public AjaxResult list(@RequestParam Map<String, Object> params){
-
-        return AjaxResult.success("成功");
+        QueryWrapper<TagEntity> queryWrapper = new QueryWrapper<>();
+        queryWrapper.orderByAsc("sort");
+        queryWrapper.eq("state", 1);
+        List<TagEntity> list = tagService.list(queryWrapper);
+        return AjaxResult.success(list);
     }
 
 

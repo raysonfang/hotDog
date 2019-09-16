@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 /**
  * 站点信息表
  * 
- * @author rayson
+ * @author raysonfang
  * @email 793514387@qq.com
  * @date 2019-08-20 10:57:31
  */
@@ -83,5 +83,15 @@ public class SiteEntity extends BaseModel<SiteEntity> implements Serializable {
 	 * 排序
 	 */
 	private Integer sort;
+
+	/**
+	 * 网站图标URL
+	 */
+	private String siteIconUrl;
+
+	/**
+	 * 站点信息描述
+	 */
+	private String siteDesc;
 
 }

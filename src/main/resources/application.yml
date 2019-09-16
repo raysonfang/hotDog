@@ -31,13 +31,16 @@ pagehelper:
 spring:
   devtools:
     restart:
-      enabled: true
       additional-paths: src/main/java
-      exclude: /static/**,WEB-INF/views/**
+      exclude: /static/**
+  thymeleaf:
+    cache: false
+  resources:
+    static-locations: classpath:/static/,classpath:/views/
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/hotdog?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/hotdog?useUnicode=true&useSSL=false&serverTimezone=GMT%2B8
     username: root
     type: com.alibaba.druid.pool.DruidDataSource
     password:
@@ -55,7 +58,29 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     filters: stat,wall,log4j2
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  quartz:
+    #相关属性配置
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceName: clusteredScheduler
+            instanceId: AUTO
+          jobStore:
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            tablePrefix: QRTZ_
+            isClustered: true
+            clusterCheckinInterval: 10000
+            useProperties: false
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            threadCount: 10
+            threadPriority: 5
+            threadsInheritContextClassLoaderOfInitializingThread: true
 
+    #数据库方式
+    job-store-type: jdbc
 logging:
   config: classpath:log4j2.xml
   level:
