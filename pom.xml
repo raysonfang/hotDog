@@ -20,7 +20,7 @@
         <druid.version>1.0.29</druid.version>
         <webmagic.version>0.7.3</webmagic.version>
         <easypoi.version>4.1.0</easypoi.version>
-        <swagger2.version>2.7.0</swagger2.version>
+        <swagger2.version>2.10.0</swagger2.version>
         <mybatis-plus-boot-starter.version>3.1.2</mybatis-plus-boot-starter.version>
         <quartz.version>2.3.1</quartz.version>
         <skipTests>true</skipTests>
